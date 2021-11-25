@@ -4,6 +4,9 @@
 # Install dependencies
 npm install
 
+# Build bundle
+npm build
+
 # Run the bot
 npm start
 ```
@@ -12,7 +15,7 @@ npm start
 
 ```sh
 # 1. Build bundle
-npm build
+npm install && npm build
 
 # 2. Build container
 docker build -t probot-ilaam .
