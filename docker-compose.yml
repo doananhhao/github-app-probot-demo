@@ -1,0 +1,11 @@
+# For testing
+version: '3.1'
+
+services:
+  probot-service:
+    image: probot-ilaam
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 3000:3000

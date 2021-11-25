@@ -1,15 +1,14 @@
-import { Probot } from "probot";
+import {Probot} from "probot";
+import {PomSupporter} from "./supporter/PomSupporter";
+import {GitHelper} from "./helper/GitHelper";
 
 export = (app: Probot) => {
-  app.on("issues.opened", async (context) => {
-    const issueComment = context.issue({
-      body: "Thanks for opening this issue!",
-    });
-    await context.octokit.issues.createComment(issueComment);
-  });
-  // For more information on building apps:
-  // https://probot.github.io/docs/
 
-  // To get your app running against GitHub, see:
-  // https://probot.github.io/docs/development/
+  app.on(["pull_request.reopened", "pull_request.opened"], (context: any) => {
+    const paths = ["pom.xml"];
+    const contextData = GitHelper.buildContextData(
+        context.payload.repository, context.payload.pull_request.head.ref);
+    PomSupporter.release(context.octokit, contextData, paths);
+  });
+
 };

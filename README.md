@@ -1,7 +1,3 @@
-# probot-ilaam
-
-> A GitHub App built with [Probot](https://github.com/probot/probot) that A Probot app
-
 ## Setup
 
 ```sh
@@ -15,19 +11,14 @@ npm start
 ## Docker
 
 ```sh
-# 1. Build container
+# 1. Build bundle
+npm build
+
+# 2. Build container
 docker build -t probot-ilaam .
 
-# 2. Start container
+# 3. Start container
 docker run -e APP_ID=<app-id> -e PRIVATE_KEY=<pem-value> probot-ilaam
+OR
+docker compose up
 ```
-
-## Contributing
-
-If you have suggestions for how probot-ilaam could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
-
-For more, check out the [Contributing Guide](CONTRIBUTING.md).
-
-## License
-
-[ISC](LICENSE) © 2021 Hao Doan <hao.doan@lexisnexisrisk.com>

@@ -9,4 +9,5 @@
 **/.editorconfig
 **/dist
 **/*.pem
+**/.idea/
 Dockerfile
